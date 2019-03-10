@@ -13,10 +13,10 @@
 // Macro to build a string containing shader source directly from a cpp
 #define GLMLV_SHADERSRC(str) #str
 
-namespace glmlv 
+namespace glmlv
 {
 
-class GLShader 
+class GLShader
 {
     GLuint m_GLId;
     typedef std::unique_ptr<char[]> CharBuffer;

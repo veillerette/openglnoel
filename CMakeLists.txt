@@ -28,9 +28,10 @@ set(ASSIMP_DIR assimp-4.1.0)
 set(TINYGLTF_DIR tiny_gltf)
 
 add_subdirectory(third-party/${GLFW_DIR})
-add_subdirectory(third-party/${ASSIMP_DIR})
+#add_subdirectory(third-party/${ASSIMP_DIR})
 
 find_package(OpenGL REQUIRED)
+find_package(assimp REQUIRED)
 
 if(GLMLV_USE_BOOST_FILESYSTEM)
     find_package(Boost COMPONENTS system filesystem REQUIRED)
