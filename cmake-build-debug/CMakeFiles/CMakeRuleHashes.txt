@@ -1,0 +1,16 @@
+# Hashes of file build rules.
+9a74bf14654727d9e5dae97f5e43a8ea bin/shaders/deferred-renderer-shadow-map/SM.fs.glsl
+2ca0e6ee64e81031502f5cdbf636a52b bin/shaders/deferred-renderer-shadow-map/SM.vs.glsl
+88a0d0841b50f35aa02a11b9725da2cb bin/shaders/deferred-renderer-shadow-map/ShadingPass.fs.glsl
+26972fe9f8eb45d4805bf882632b09e5 bin/shaders/deferred-renderer-shadow-map/ShadingPass.vs.glsl
+6ae09749c55a2ab512fb6e80586dc842 bin/shaders/deferred-renderer-shadow-map/geometryPass.fs.glsl
+2194bf7bc19b6bf726dc1182dd6eb12b bin/shaders/deferred-renderer-shadow-map/geometryPass.vs.glsl
+38b72f2040e78148c0cbc00107f977e3 bin/shaders/deferred-renderer/ShadingPass.fs.glsl
+745bee93355639c20731e9bebc05fdbf bin/shaders/deferred-renderer/ShadingPass.vs.glsl
+31c8ac6c1da92cfa811ce21a76eb3759 bin/shaders/deferred-renderer/geometryPass.fs.glsl
+1a689ffa164d97d3338b6aea312b967f bin/shaders/deferred-renderer/geometryPass.vs.glsl
+9535b7fd162b1b6c7eabd03c14e8a02e bin/shaders/forward-renderer/forward.fs.glsl
+17b97d7ed4245d4eed414aa7820b883b bin/shaders/forward-renderer/forward.vs.glsl
+74d9090191a0876e26a3536a2f479666 bin/shaders/forward-renderer/forward2.fs.glsl
+2b3f0c5b5e330d04399cd547d35c21d9 bin/shaders/glmlv/color3.fs.glsl
+8999d9f333254dd852e73e7f320dafb5 bin/shaders/glmlv/position2_color3.vs.glsl

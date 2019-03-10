@@ -1,0 +1,2 @@
+/usr/bin/ar qc lib/libglmlv.a  CMakeFiles/glmlv.dir/lib/src/Image2DRGBA.cpp.o CMakeFiles/glmlv.dir/lib/src/ViewController.cpp.o CMakeFiles/glmlv.dir/lib/src/gl_debug_output.cpp.o CMakeFiles/glmlv.dir/lib/src/glmlv.cpp.o CMakeFiles/glmlv.dir/lib/src/scene_loading.cpp.o CMakeFiles/glmlv.dir/lib/src/simple_geometry.cpp.o
+/usr/bin/ranlib lib/libglmlv.a
