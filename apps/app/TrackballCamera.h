@@ -20,6 +20,7 @@ private:
     float _speed;
 
     bool mouseDone;
+    bool mouseRight;
     glm::mat4 origin;
 
     double tmpX;

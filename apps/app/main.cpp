@@ -9,12 +9,13 @@
 
 int main(int argc, const char *argv[]) {
 	auto *window = new Window(argv, 1920, 1080, "Projet gltf", 60);
-	auto *renderer = new Deferred(window);
+	auto *shadowMap = new ShadowMap();
+	auto *renderer = new Deferred(window, shadowMap);
 	auto *gShader = renderer->getGeometryShader();
 	auto *sShader = renderer->getShadingShader();
 	double timer = glfwGetTime();
-	const char *SCENE_PATH = ((argc > 1) ? argv[1] : ("scenes/BoxAnimated/BoxAnimated.gltf"));
-	SceneDescriptor *scene = new SceneDescriptor(SCENE_PATH);
+	const char *SCENE_PATH = ((argc > 1) ? argv[1] : ("scenes/drone/scene.gltf"));
+	SceneDescriptor *scene = new SceneDescriptor(SCENE_PATH, shadowMap->getShader());
 	auto *cam = new TrackballCamera(std::max(scene->size(), 1.0f) * 1.5);
 	scene->debug();
 	scene->bindScene();

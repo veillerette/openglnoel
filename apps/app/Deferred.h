@@ -24,7 +24,7 @@ enum GBufferTextureType {
 
 class Deferred {
 public:
-	Deferred(Window *window);
+	Deferred(Window *window, ShadowMap *map);
 
 	~Deferred();
 

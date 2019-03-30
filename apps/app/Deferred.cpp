@@ -15,8 +15,8 @@ const GLenum Deferred::drawBuffers[] = {GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMEN
 const GLenum Deferred::m_GBufferTextureFormat[GBufferTextureCount] =
 		{COLOR_FORMAT, COLOR_FORMAT, COLOR_FORMAT, COLOR_FORMAT, COLOR_FORMAT, COLOR_FORMAT, COLOR_FORMAT, GL_DEPTH_COMPONENT32F};
 
-Deferred::Deferred(Window *window) : window(window), shaderPass(nullptr), geometryPass(nullptr),
-quad(nullptr), gamma(2.2), what(0), light(0,0,0), reloadSM(true), shadowMap(nullptr),
+Deferred::Deferred(Window *window, ShadowMap *map) : window(window), shaderPass(nullptr), geometryPass(nullptr),
+quad(nullptr), gamma(2.2), what(0), light(0,0,0), reloadSM(true), shadowMap(map),
 smBias(0.001), smRes(SHADOW_MAP_RES), bloom(nullptr), powerBloom(POWER_BLOOM), metal(0.54),
 rough(0.24){
 	glGenTextures(GBufferTextureCount, m_GBufferTextures);
@@ -31,7 +31,6 @@ rough(0.24){
 	quad = Geometry::generateQuad();
 	light = glm::vec3(-25, -128, -410);
 
-	shadowMap = new ShadowMap();
 	bloom = new Bloom(window, ITER_DEFAULT);
 }
 

@@ -37,6 +37,11 @@ private:
 	Shader *shader;
 
 	void init();
+
+public:
+	Shader *getShader() const;
+
+private:
 	void initTexture();
 	void initFramebuffer();
 	void initSampler();

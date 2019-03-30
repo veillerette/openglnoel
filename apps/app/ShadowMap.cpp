@@ -116,3 +116,7 @@ void ShadowMap::bind(Shader *shadingPass, TrackballCamera *cam) {
 	shadingPass->uniformMatrix("uDirLightViewProjMatrix", tmp);
 
 }
+
+Shader *ShadowMap::getShader() const {
+	return shader;
+}

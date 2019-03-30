@@ -9,10 +9,11 @@
 #include "Deferred.h"
 #include "Skin.h"
 #include <glmlv/Image2DRGBA.hpp>
+#include "Shader.h"
 
 class SceneDescriptor {
 public:
-	SceneDescriptor(const char *path);
+	SceneDescriptor(const char *path, Shader * sShader);
 
 	void drawModel(Deferred *renderer);
 
@@ -45,6 +46,7 @@ private:
 	std::map<int, int> rig; //node pose associated to a mesh
 	Skin skin;
 	bool activeTextures;
+	Shader *shadowShader;
 
 	void drawVertices(int i, Deferred *renderer);
 

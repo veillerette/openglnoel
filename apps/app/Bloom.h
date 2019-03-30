@@ -24,8 +24,8 @@ private:
 
 	Shader *screenShader;
 	Shader *screenFinal;
-	const int textureWidth = 455;
-	const int textureHeight = 256;
+	const int textureWidth = 1244;
+	const int textureHeight = 700;
 
 	Geometry *quad;
 

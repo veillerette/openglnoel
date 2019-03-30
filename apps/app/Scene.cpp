@@ -2,7 +2,7 @@
 
 #include <queue>
 
-SceneDescriptor::SceneDescriptor(const char *path) : model(), vaos(), activeTextures(true) {
+SceneDescriptor::SceneDescriptor(const char *path, Shader *sShader) : model(), vaos(), activeTextures(true), shadowShader(sShader) {
 	tinygltf::TinyGLTF loader;
 	std::string err;
 	std::string warn;
@@ -211,9 +211,13 @@ void SceneDescriptor::drawVertices(int i, Deferred *renderer) {
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
 
-		bool isDiffuse = false;
 
+		glm::mat4 skinMatrix = (rig.find(i) != rig.end()) ? skin.poses[rig[i]].transform : glm::mat4(1);
+
+
+		bool isDiffuse = false;
 		if (activeTextures) {
+			gShader->uniformMatrix("uSkinMatrix", skinMatrix);
 			if (mat.extensions.find("KHR_materials_pbrSpecularGlossiness") != mat.extensions.end()) {
 				tinygltf::Value vals = mat.extensions["KHR_materials_pbrSpecularGlossiness"];
 				const int index = vals.Get("diffuseTexture").Get("index").Get<int>();
@@ -268,9 +272,8 @@ void SceneDescriptor::drawVertices(int i, Deferred *renderer) {
 				}
 			}
 			gShader->uniformValue("uShininess", 0.2f);
-			//std::cout << "call rig : " << rig[i] << " (" << i << ")" << std::endl;
-			glm::mat4 skinMatrix = (rig.find(i) != rig.end()) ? skin.poses[rig[i]].transform : glm::mat4(1);
-			gShader->uniformMatrix("uSkinMatrix", skinMatrix);
+		} else {
+			shadowShader->uniformMatrix("uSkinMatrix", skinMatrix);
 		}
 		glDrawElements(prim.mode, access.count, access.componentType,
 					   nullptr);

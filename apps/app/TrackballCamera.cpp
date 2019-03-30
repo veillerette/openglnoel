@@ -3,7 +3,8 @@
 static int BERK_SCROLL_Y = 0;
 
 TrackballCamera::TrackballCamera(float distance, float speed, float angleX, float angleY)
-		: _distance(distance), _speed(speed), _angleX(angleX), _angleY(angleY), mouseDone(false), origin(glm::mat4(1.0f)) {
+		: _distance(distance), _speed(speed), _angleX(angleX), _angleY(angleY),
+		mouseDone(false), origin(glm::mat4(1.0f)), mouseRight(false) {
 }
 
 void TrackballCamera::moveFront(float delta) {
@@ -50,8 +51,9 @@ void TrackballCamera::gestEvent(GLFWwindow *window) {
 		BERK_SCROLL_Y = y;
 	};
 	glfwSetScrollCallback(window, fct); // IT IS CREEPY
-
-	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
+	int buttonRight = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
+	int buttonLeft = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+	if (buttonLeft == GLFW_PRESS) {
 		if (mouseDone) {
 			double x, y;
 			glfwGetCursorPos(window, &x, &y);
@@ -63,9 +65,25 @@ void TrackballCamera::gestEvent(GLFWwindow *window) {
 			mouseDone = true;
 			glfwGetCursorPos(window, &tmpX, &tmpY);
 		}
-	} else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE) {
+	} else if (buttonLeft == GLFW_RELEASE) {
 		mouseDone = false;
 	}
+	if (buttonRight == GLFW_PRESS) {
+		if (mouseRight) {
+			double x, y;
+			glfwGetCursorPos(window, &x, &y);
+			glm::mat4 v = glm::translate(origin, glm::vec3((x - tmpX) * _distance / 170.0, (y - tmpY) * _distance/ 170.0, 0));
+			this->setOrigin(v);
+			tmpX = x;
+			tmpY = y;
+		} else {
+			mouseRight = true;
+			glfwGetCursorPos(window, &tmpX, &tmpY);
+		}
+	} else if (buttonRight == GLFW_RELEASE) {
+		mouseRight = false;
+	}
+
 
 	if(BERK_SCROLL_Y != 0) {
 		this->moveFront(BERK_SCROLL_Y * (_distance * 10 / 250.0));
