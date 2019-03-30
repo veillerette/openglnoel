@@ -17,8 +17,8 @@ out mat4 vNormalMatrix;
 out vec3 vTangent;
 
 void main() {
-    vec4 vertexPosition = vec4(aVertexPosition, 1);
-    vec4 vertexNormal = vec4(aVertexNormal, 0);
+    vec4 vertexPosition = uSkinMatrix *vec4(aVertexPosition, 1);
+    vec4 vertexNormal = uSkinMatrix *vec4(aVertexNormal, 0);
 
     vPosition_vs = vec3(uMVMatrix * vertexPosition);
     vNormal_vs = vec3(uNormalMatrix * vertexNormal);
@@ -27,5 +27,5 @@ void main() {
     vTexCoords = aVertexTexCoords;
     vTangent = aVertexTangent;
 
-    gl_Position = uMVPMatrix * uSkinMatrix * vertexPosition;
+    gl_Position = uMVPMatrix * vertexPosition;
 }

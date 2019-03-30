@@ -13,7 +13,7 @@ int main(int argc, const char *argv[]) {
 	auto *gShader = renderer->getGeometryShader();
 	auto *sShader = renderer->getShadingShader();
 	double timer = glfwGetTime();
-	const char *SCENE_PATH = ((argc > 1) ? argv[1] : ("scenes/drone/scene.gltf"));
+	const char *SCENE_PATH = ((argc > 1) ? argv[1] : ("scenes/BoxAnimated/BoxAnimated.gltf"));
 	SceneDescriptor *scene = new SceneDescriptor(SCENE_PATH);
 	auto *cam = new TrackballCamera(std::max(scene->size(), 1.0f) * 1.5);
 	scene->debug();

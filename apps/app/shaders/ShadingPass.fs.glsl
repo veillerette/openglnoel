@@ -111,6 +111,7 @@ void main() {
 	}
 
 	vec3 norm = vec3(texelFetch(uGNormal, ivec2(gl_FragCoord.xy), 0));
+    // recup composantes from deferred rendering
 	vec3 d = vec3(texelFetch(uGDiffuse, ivec2(gl_FragCoord.xy), 0));
 	vec3 a = vec3(texelFetch(uGAmbient, ivec2(gl_FragCoord.xy), 0));
 
@@ -119,4 +120,5 @@ void main() {
 	color = a + computeVisibility(pos) * color;
 	fFragColor = pow(color, vec3(1.0 / uGamma));
 	fBrightColor = a * uBloomPower;
+//	fFragColor = vNormal_vs;
 }

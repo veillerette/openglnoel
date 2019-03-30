@@ -29,7 +29,7 @@ rough(0.24){
 	initFramebuffer();
 
 	quad = Geometry::generateQuad();
-	light = glm::vec3(-50, 65, -500);
+	light = glm::vec3(-25, -128, -410);
 
 	shadowMap = new ShadowMap();
 	bloom = new Bloom(window, ITER_DEFAULT);

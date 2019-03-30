@@ -268,6 +268,7 @@ void SceneDescriptor::drawVertices(int i, Deferred *renderer) {
 				}
 			}
 			gShader->uniformValue("uShininess", 0.2f);
+			//std::cout << "call rig : " << rig[i] << " (" << i << ")" << std::endl;
 			glm::mat4 skinMatrix = (rig.find(i) != rig.end()) ? skin.poses[rig[i]].transform : glm::mat4(1);
 			gShader->uniformMatrix("uSkinMatrix", skinMatrix);
 		}
